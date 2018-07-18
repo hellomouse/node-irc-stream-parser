@@ -1,5 +1,5 @@
 {
-  "name": "irc-stream-parser",
+  "name": "@hellomouse/irc-stream-parser",
   "version": "0.1.0",
   "description": "A streaming irc parser",
   "main": "index.js",
