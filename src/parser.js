@@ -1,5 +1,5 @@
-const { Transform } = require('stream');
-const numerics = require('./numerics.json');
+import { Transform } from 'stream';
+import numerics from './numerics.json';
 
 /** Class representing an IRC message */
 class IRCMessage {
@@ -82,4 +82,4 @@ class Parser extends Transform {
   }
 }
 
-module.exports = Parser;
+export default Parser;

@@ -1,5 +1,5 @@
-const Parser = require('./src/parser.js');
-const numerics = require('./src/numerics.json');
+import Parser from './src/parser.js';
+import numerics from './src/numerics.json';
 
-module.exports = Parser;
-module.exports.numerics = numerics;
+export default Parser;
+export { numerics };
