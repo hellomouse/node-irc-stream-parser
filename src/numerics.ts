@@ -1,4 +1,5 @@
-export default {
+declare const numerics: {
+  [key: string]: string
   "001": "RPL_WELCOME",
   "002": "RPL_YOURHOST",
   "003": "RPL_CREATED",
@@ -162,3 +163,5 @@ export default {
   "907": "ERR_SASLALREADY",
   "908": "RPL_SASLMECHS"
 }
+
+export default numerics
