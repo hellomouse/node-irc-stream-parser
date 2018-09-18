@@ -1,5 +1,5 @@
 import { Transform } from 'stream';
-import numerics from './numerics.json';
+import numerics from './numerics';
 
 /** Class representing an IRC message */
 class IRCMessage {

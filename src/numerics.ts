@@ -1,4 +1,4 @@
-{
+export default {
   "001": "RPL_WELCOME",
   "002": "RPL_YOURHOST",
   "003": "RPL_CREATED",
