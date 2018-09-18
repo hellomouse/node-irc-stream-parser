@@ -3,6 +3,15 @@ import numerics from './numerics';
 
 /** Class representing an IRC message */
 class IRCMessage {
+  tags: {
+    [key: string]: string;
+  };
+  raw: string;
+  prefix: string | null;
+  numeric: Number | null;
+  command: Number | string | null;
+  args: string[];
+
   /**
    * Constructor for the class
    * @param {String} message Raw IRC message to parse
@@ -54,6 +63,11 @@ class IRCMessage {
 
 /** Stream-based IRC message parser */
 class Parser extends Transform {
+  opts: {
+    encoding?: string;
+  }
+  encoding: string;
+  _partialData: String | String[];
   /**
    * Constructs a new Parser
    * @param {Object} opts Options for the parser
