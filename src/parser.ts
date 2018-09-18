@@ -15,6 +15,12 @@ class IRCMessage {
   /**
    * Constructor for the class
    * @param {String} message Raw IRC message to parse
+   * @property {String} raw Raw IRC message
+   * @property {String} prefix
+   * @property {Object} tags
+   * @property {Number|null} numeric
+   * @property {String|null} command
+   * @property {String[]} args
    */
   constructor(message: string) {
     this.raw = message;
@@ -82,7 +88,7 @@ class Parser extends Transform {
   }
   /**
    * Push data to the stream to be parsed
-   * @param {Buffer} data The data to process
+   * @param {(Buffer|String)} data The data to process
    * @param {String} encoding The encoding of the string
    * @param {Function} callback Called when the chunk is processed
    */
