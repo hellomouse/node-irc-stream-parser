@@ -7,7 +7,7 @@ class IRCMessage {
    * Constructor for the class
    * @param {String} message Raw IRC message to parse
    */
-  constructor(message) {
+  constructor(message: string) {
     this.raw = message;
     let messageSplit = message.split(' ');
     let rawTags = null;
@@ -59,7 +59,7 @@ class Parser extends Transform {
    * @param {Object} opts Options for the parser
    * @param {String} opts.encoding The encoding for data coming in
    */
-  constructor(opts) {
+  constructor(opts?: { encoding?: string }) {
     super({ readableObjectMode: true });
     if (!opts) opts = {};
     this.opts = opts;
@@ -72,11 +72,11 @@ class Parser extends Transform {
    * @param {String} encoding The encoding of the string
    * @param {Function} callback Called when the chunk is processed
    */
-  _transform(data, encoding, callback) {
-    data = this._partialData + data.toString(this.encoding);
+  _transform(data: Buffer, encoding: string, callback: (error: Error | undefined, data: String | Buffer)): void {
+    data = this._partialData + data.tostring(this.encoding);
     let messages = data.split(/[\r\n]+/g);
     this._partialData = messages.splice(-1, 1); // store partial line for later
-    messages = messages.filter(m => m !== '');
+    messages = messages.filter((m: string) => m !== '');
     for (let message of messages) this.push(new IRCMessage(message));
     callback(null);
   }
