@@ -1,4 +1,4 @@
-import { Transform } from 'stream';
+import { Transform, TransformCallback } from 'stream';
 import numerics from './numerics';
 
 /** Class representing an IRC message */
@@ -86,7 +86,7 @@ class Parser extends Transform {
    * @param {String} encoding The encoding of the string
    * @param {Function} callback Called when the chunk is processed
    */
-  _transform(data: Buffer, encoding: string, callback: (error: Error | undefined, data: String | Buffer)): void {
+  _transform(data: any, encoding: string, callback: TransformCallback): void {
     data = this._partialData + data.tostring(this.encoding);
     let messages = data.split(/[\r\n]+/g);
     this._partialData = messages.splice(-1, 1); // store partial line for later
