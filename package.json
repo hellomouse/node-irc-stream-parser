@@ -19,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/hellomouse/node-irc-stream-parser/issues"
   },
-  "homepage": "https://github.com/hellomouse/node-irc-stream-parser#readme"
+  "homepage": "https://github.com/hellomouse/node-irc-stream-parser#readme",
+  "types": "index.d.ts",
+  "devDependencies": {
+    "@types/node": "^10.10.1",
+    "typescript": "^3.0.3"
+  }
 }
