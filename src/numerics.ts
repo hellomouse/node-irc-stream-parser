@@ -1,5 +1,7 @@
-declare const numerics: {
+declare let numerics: {
   [key: string]: string
+}
+numerics = {
   "001": "RPL_WELCOME",
   "002": "RPL_YOURHOST",
   "003": "RPL_CREATED",
@@ -164,4 +166,4 @@ declare const numerics: {
   "908": "RPL_SASLMECHS"
 }
 
-export default numerics
+export = numerics
