@@ -1,16 +1,16 @@
 import { Transform, TransformCallback } from 'stream';
-import numerics from './numerics';
+import numerics = require('./numerics');
 
 /** Class representing an IRC message */
 class IRCMessage {
-  tags: {
+  public tags: {
     [key: string]: string;
   };
-  raw: string;
-  prefix: string | null;
-  numeric: Number | null;
-  command: Number | string | null;
-  args: string[];
+  public raw: string;
+  public prefix: string | null;
+  public numeric: Number | null;
+  public command: Number | string | null;
+  public args: string[];
 
   /**
    * Constructor for the class
@@ -25,7 +25,7 @@ class IRCMessage {
   constructor(message: string) {
     this.raw = message;
     let messageSplit = message.split(' ');
-    let rawTags = null;
+    let rawTags: string | null = null;
     this.prefix = null;
     let commandIndex = 0;
     this.tags = {};
@@ -88,18 +88,19 @@ class Parser extends Transform {
   }
   /**
    * Push data to the stream to be parsed
-   * @param {(Buffer|String)} data The data to process
+   * @param {(Buffer|String)} chunk The data to process
    * @param {String} encoding The encoding of the string
    * @param {Function} callback Called when the chunk is processed
    */
   _transform(chunk: any, encoding: string, callback: TransformCallback): void {
-    let data = this._partialData + chunk.tostring(this.encoding);
+    let data: string = this._partialData + chunk.toString(this.encoding);
     let messages = data.split(/[\r\n]+/g);
     this._partialData = messages.splice(-1, 1); // store partial line for later
     messages = messages.filter((m: string) => m !== '');
     for (let message of messages) this.push(new IRCMessage(message));
     callback();
   }
+  static numerics = numerics
 }
 
-export default Parser;
+export = Parser;
