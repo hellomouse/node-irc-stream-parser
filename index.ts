@@ -1,5 +1,3 @@
-import Parser from './src/parser';
-import numerics from './src/numerics';
+import Parser = require('./src/parser');
 
-export default Parser;
-export { numerics };
+export = Parser
